@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="bean"/>
+
+    <!--
+    id：唯一标识；
+    class：类全限定名；
+    lazy-init：懒加载默认false；
+    autowired：自动装配默认bytype，除此还有byname，constructor，no
+
+    -->
+<!--    <bean id="car" class="cn.lq.spring.bean.Car"/>-->
+<!--    <bean id="person" class="cn.lq.spring.bean.Person" lazy-init="default" autowire="default" init-method="init"-->
+<!--          destroy-method="destroy" depends-on="car" scope="prototype">-->
+<!--        <property name="age" value="18"/>-->
+<!--        <property name="name" value="dark"/>-->
+<!--        <property name="car" ref="car"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="cc" class="cn.lq.spring.bean.Person" lazy-init="default" autowire="default" init-method="init"-->
+<!--          destroy-method="destroy" depends-on="car" scope="prototype">-->
+<!--        <property name="age" value="18"/>-->
+<!--        <property name="name" value="cc"/>-->
+<!--        <property name="car" ref="car"/>-->
+<!--    </bean>-->
+</beans>
