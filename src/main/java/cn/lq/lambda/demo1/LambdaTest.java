@@ -1,9 +1,8 @@
 package cn.lq.lambda.demo1;
 
+import java.io.PrintStream;
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 import java.util.stream.Stream;
 
 public class LambdaTest {
@@ -75,6 +74,25 @@ public class LambdaTest {
 
         supplier = User::new;
         supplier.get();
+
+        //方法引用1 类名::静态方法名
+        Function<String, Integer> function = Integer::parseInt;
+
+
+        //方法引用2 对象::实例方法名
+        PrintStream printStream = System.out;
+        Consumer<String> consumer = printStream::println;
+
+
+        //方法引用3 类名::实例方法名
+        //第一个调用第二个
+        //BiPredicate<String, String> biPredicate = (x,y)->x.contains(y);
+        BiPredicate<String, String> biPredicate = String::contains;
+        biPredicate.test("cccca", "a");
+
+        //方法引用4 类名::new
+        Supplier<User> supplier2 = () -> new User();
+
     }
 
     public static Long getTTime(Calculate calculate) {
