@@ -1,11 +1,9 @@
 package cn.lq.lambda.demo1;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.io.PrintStream;
+import java.util.function.*;
 import java.util.stream.Stream;
-
 
 public class LambdaTest {
     public static void main(String[] args) {
@@ -34,11 +32,13 @@ public class LambdaTest {
 
         Factory factory3 = () -> new User();
 
-        User user2 = (User) factory3.getObject();
+        User user3 = (User) factory3.getObject();
+        factory2 = () -> new User();
+        User user2 = (User) factory2.getObject();
 
         //lambda作为参数传递
-        User user3 = getUserFormFactory(() -> new User(), "user");
-        System.out.println(user3 == null);
+        User user4 = getUserFormFactory(() -> new User(), "user");
+        System.out.println(user == null);
 
 
         //------------------------------------------
@@ -79,6 +79,26 @@ public class LambdaTest {
 
         supplier = User::new;
         supplier.get();
+
+
+        //方法引用1 类名::静态方法名
+        Function<String, Integer> function = Integer::parseInt;
+
+
+        //方法引用2 对象::实例方法名
+        PrintStream printStream = System.out;
+        Consumer<String> consumer = printStream::println;
+
+
+        //方法引用3 类名::实例方法名
+        //第一个调用第二个
+        //BiPredicate<String, String> biPredicate = (x,y)->x.contains(y);
+        BiPredicate<String, String> biPredicate = String::contains;
+        biPredicate.test("cccca", "a");
+
+        //方法引用4 类名::new
+        Supplier<User> supplier2 = () -> new User();
+
     }
 
     public static Long getTTime(Calculate calculate) {
@@ -106,4 +126,5 @@ public class LambdaTest {
     public static boolean predicateOr(Predicate<String> p1, Predicate<String> p2) {
         return p1.or(p2).test("apple");
     }
+
 }
